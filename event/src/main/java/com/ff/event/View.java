@@ -1,7 +1,7 @@
 package com.ff.event;
 
 /**
- * description:
+ * description: 模仿 android 中的 View
  * author: FF
  * time: 2019/4/14 21:45
  */

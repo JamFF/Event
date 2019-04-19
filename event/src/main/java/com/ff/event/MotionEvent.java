@@ -1,7 +1,7 @@
 package com.ff.event;
 
 /**
- * description: 事件
+ * description: 模仿 android 中的 MotionEvent事件
  * author: FF
  * time: 2019/4/14 21:48
  */

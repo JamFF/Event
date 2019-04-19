@@ -1,5 +1,5 @@
 # Event
-Android Event
+模拟Android事件分发
 
 ## 参考
 [Android进阶——Android事件分发机制之dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent](https://blog.csdn.net/qq_30379689/article/details/53967177)

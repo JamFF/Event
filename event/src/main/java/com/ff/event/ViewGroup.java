@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * description:
+ * description: 模仿 android 中的 ViewGroup
  * author: FF
  * time: 2019/4/14 21:46
  */
@@ -18,10 +18,15 @@ public class ViewGroup extends View {
     // First touch target in the linked list of touch targets.
     private TouchTarget mFirstTouchTarget;
 
+    private boolean isIntercept;// 是否拦截
+
     public ViewGroup(int left, int top, int right, int bottom) {
         super(left, top, right, bottom);
     }
 
+    public void setIntercept(boolean intercept) {
+        isIntercept = intercept;
+    }
 
     public void addView(View view) {
         if (view == null) {
@@ -121,7 +126,7 @@ public class ViewGroup extends View {
      * @return true 代表拦截
      */
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return false;
+        return isIntercept;
     }
 
     /**
@@ -136,7 +141,7 @@ public class ViewGroup extends View {
         public View child;
         // 回收池，设计在当前类中，使用静态保证一份（也是链表）
         private static TouchTarget sRecycleBin;
-        // 针对并发使用synchronized，设计为0个长度的数组减小堆内存占用
+        // 针对并发使用synchronized，设计这个锁为0个长度的数组减小堆内存占用，源码中也是这样设计的
         private static final Object sRecycleLock = new Object[0];
         // 链表下一个元素
         public TouchTarget next;

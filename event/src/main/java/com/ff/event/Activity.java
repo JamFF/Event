@@ -1,7 +1,7 @@
 package com.ff.event;
 
 /**
- * description:
+ * description: 模仿 android 中的 Activity
  * author: FF
  * time: 2019/4/14 22:42
  */
@@ -12,9 +12,11 @@ public class Activity {
     public static void main(String[] args) {
 
         final ViewGroup viewGroup = new ViewGroup(0, 0, 1080, 1920);
+        viewGroup.setIntercept(false);// 默认不拦截
         viewGroup.setName("顶级容器");
 
         final ViewGroup viewGroup1 = new ViewGroup(0, 0, 500, 500);
+        viewGroup.setIntercept(false);// 默认不拦截
         viewGroup1.setName("二级容器");
 
         final View view = new View(0, 0, 200, 200);
