@@ -141,7 +141,12 @@ public class ViewGroup extends View {
         public View child;
         // 回收池，设计在当前类中，使用静态保证一份（也是链表）
         private static TouchTarget sRecycleBin;
-        // 针对并发使用synchronized，设计这个锁为0个长度的数组减小堆内存占用，源码中也是这样设计的
+
+        // 针对并发使用synchronized，设计这个锁为0个长度的数组，源码中也是这样设计的
+        // 这个设计并不是为了减小堆内存占用
+        // 零长度的byte数组对象创建起来将比任何对象都经济
+        // 查看编译后的字节码：生成零长度的byte[]对象只需3条操作码
+        // 而Object lock = new Object()则需要7行操作码
         private static final Object sRecycleLock = new Object[0];
         // 链表下一个元素
         public TouchTarget next;
