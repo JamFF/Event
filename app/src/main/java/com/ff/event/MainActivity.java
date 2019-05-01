@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.d(TAG, "onTouch: ");
-                return false;// 返回true，onClick不再相应
+                boolean result = false;// true表示消费，onTouchEvent，onClick将不再执行
+                Log.d(TAG, "onTouch: action = " + event.getAction() + ", return = " + result);
+                return result;
             }
         });
 
